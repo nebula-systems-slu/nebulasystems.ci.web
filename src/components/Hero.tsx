@@ -131,7 +131,7 @@ export const Hero = () => {
           >
             {[
               { value: "8+", label: t.hero.stats.years },
-              { value: "50+", label: t.hero.stats.projects },
+              //{ value: "50+", label: t.hero.stats.projects },
               { value: "FULL", label: t.hero.stats.stack },
             ].map((stat) => (
               <div key={stat.label} className="text-center">

@@ -139,13 +139,13 @@ export const translations = {
       title: "PRONTO PARA",
       titleHighlight: "DECOLAR",
       subtitle:
-        "Inicie uma transmissão e descubra como posso engenheirar a solução perfeita para sua missão.",
+        "Inicie uma transmissão e descubra como posso construir a solução perfeita para seu negócio.",
       cta: "INICIAR TRANSMISSÃO",
       status: "CANAL ABERTO // RESPOSTA EM < 24H",
       info: [
-        { title: "EMAIL", value: "contato@nebulosa.dev" },
-        { title: "COMM LINK", value: "+55 (11) 9999-9999" },
-        { title: "BASE", value: "São Paulo, Brasil" },
+        { title: "EMAIL", value: "albertojr11@hotmail.com" },
+        { title: "COMM LINK", value: "+55 (71) 9 9399-9204" },
+        { title: "BASE", value: "Bahia, Brasil" },
       ],
     },
 
@@ -304,9 +304,9 @@ export const translations = {
       cta: "START TRANSMISSION",
       status: "CHANNEL OPEN // RESPONSE IN < 24H",
       info: [
-        { title: "EMAIL", value: "contact@nebulosa.dev" },
-        { title: "COMM LINK", value: "+55 (11) 9999-9999" },
-        { title: "BASE", value: "São Paulo, Brazil" },
+        { title: "EMAIL", value: "albertojr11@hotmail.com" },
+        { title: "COMM LINK", value: "+55 (71) 9 9399-9204" },
+        { title: "BASE", value: "Bahia, Brasil" },
       ],
     },
 
