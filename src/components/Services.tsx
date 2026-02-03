@@ -1,6 +1,13 @@
-import { Cloud, Code2, Database, Rocket, Layers, Shield, Wrench } from "lucide-react";
+import { Cloud, Code2, Database, Rocket, Layers, Shield, Wrench, ChevronRight, CheckCircle } from "lucide-react";
+import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import servicesBg from "@/assets/services-bg.jpg";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const icons = [Code2, Cloud, Layers, Database, Shield, Rocket];
 
@@ -30,8 +37,25 @@ const getColorClasses = (color: string) => {
 
 const colorPattern = ["cyan", "magenta", "orange", "cyan", "magenta", "orange"];
 
+interface ServiceItem {
+  title: string;
+  subtitle: string;
+  description: string;
+  modalContent?: {
+    intro: string;
+    sections: { title: string; text: string }[];
+  };
+}
+
 export const Services = () => {
   const { t } = useLanguage();
+  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  const handleServiceClick = (service: ServiceItem, index: number) => {
+    setSelectedService(service);
+    setSelectedIndex(index);
+  };
 
   return (
     <section id="services" className="py-24 relative overflow-hidden">
@@ -69,6 +93,7 @@ export const Services = () => {
             return (
               <div
                 key={service.title}
+                onClick={() => handleServiceClick(service as ServiceItem, index)}
                 className={`group cyber-card p-6 ${colorClasses.border} ${colorClasses.shadow} transition-all duration-300 cursor-pointer opacity-0 animate-fade-in bracket-corners`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -93,9 +118,12 @@ export const Services = () => {
                 </p>
 
                 {/* Terminal Footer */}
-                <div className="mt-4 pt-4 border-t border-border/30">
+                <div className="mt-4 pt-4 border-t border-border/30 flex items-center justify-between">
                   <span className="text-neon-green text-xs font-mono">
                     {">"} {t.services.status}: <span className="text-foreground">{t.services.operational}</span>
+                  </span>
+                  <span className="text-xs text-muted-foreground font-rajdhani flex items-center gap-1 group-hover:text-primary transition-colors">
+                    {t.services.learnMore} <ChevronRight className="w-3 h-3" />
                   </span>
                 </div>
               </div>
@@ -103,6 +131,53 @@ export const Services = () => {
           })}
         </div>
       </div>
+
+      {/* Service Detail Modal */}
+      <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
+        <DialogContent className="cyber-card border-neon-cyan/30 bg-background/95 backdrop-blur-xl max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="font-orbitron text-2xl flex items-center gap-3">
+              <span className="text-primary">{selectedService?.title}</span>
+              <span className="cyber-badge text-xs">{selectedService?.subtitle}</span>
+            </DialogTitle>
+          </DialogHeader>
+          
+          {selectedService?.modalContent && (
+            <div className="mt-4 space-y-4">
+              <p className="text-muted-foreground font-rajdhani text-sm leading-relaxed">
+                {selectedService.modalContent.intro}
+              </p>
+              
+              <div className="space-y-3">
+                {selectedService.modalContent.sections.map((section) => (
+                  <div 
+                    key={section.title}
+                    className="flex items-start gap-3 p-3 border border-border/30 hover:border-neon-cyan/50 transition-colors rounded"
+                  >
+                    <CheckCircle className={`w-4 h-4 mt-0.5 flex-shrink-0 ${getColorClasses(colorPattern[selectedIndex]).icon}`} />
+                    <div>
+                      <div className="font-orbitron text-sm text-foreground">
+                        {section.title}
+                      </div>
+                      <div className="text-xs text-muted-foreground font-rajdhani">
+                        {section.text}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="mt-6 pt-4 border-t border-border/30">
+            <div className="text-xs text-muted-foreground font-mono">
+              <span className="text-neon-cyan">{t.services.status}:</span>{" "}
+              <span className="text-neon-green">{t.services.operational}</span> // 
+              <span className="text-neon-magenta"> {selectedService?.modalContent?.sections.length || 0} modules loaded</span>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Bottom Divider */}
       <div className="absolute bottom-0 left-0 right-0 h-px neon-divider" />

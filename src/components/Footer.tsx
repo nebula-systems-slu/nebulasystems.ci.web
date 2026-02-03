@@ -1,9 +1,20 @@
-import { Github, Linkedin, Twitter, Terminal } from "lucide-react";
+import { Github, Linkedin, Terminal } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export const Footer = () => {
   const { t } = useLanguage();
   const version = import.meta.env.VITE_APP_VERSION || "1.0.0";
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [termsOpen, setTermsOpen] = useState(false);
+  const [docsOpen, setDocsOpen] = useState(false);
 
   return (
     <footer className="py-12 border-t border-border/30 relative">
@@ -25,17 +36,26 @@ export const Footer = () => {
 
           {/* Links */}
           <div className="flex items-center gap-6 text-xs font-orbitron text-muted-foreground">
-            <a href="#" className="hover:text-neon-cyan transition-colors">
+            <button
+              onClick={() => setPrivacyOpen(true)}
+              className="hover:text-neon-cyan transition-colors cursor-pointer"
+            >
               {t.footer.privacy}
-            </a>
+            </button>
             <span className="text-border">|</span>
-            <a href="#" className="hover:text-neon-cyan transition-colors">
+            <button
+              onClick={() => setTermsOpen(true)}
+              className="hover:text-neon-cyan transition-colors cursor-pointer"
+            >
               {t.footer.terms}
-            </a>
+            </button>
             <span className="text-border">|</span>
-            <a href="#" className="hover:text-neon-cyan transition-colors">
+            <button
+              onClick={() => setDocsOpen(true)}
+              className="hover:text-neon-cyan transition-colors cursor-pointer"
+            >
               {t.footer.docs}
-            </a>
+            </button>
           </div>
 
           {/* Social */}
@@ -43,7 +63,7 @@ export const Footer = () => {
             {[
               { icon: Github, href: "#" },
               { icon: Linkedin, href: "#" },
-              { icon: Twitter, href: "#" },
+              
             ].map((social, index) => (
               <a
                 key={index}
@@ -66,6 +86,87 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Privacy Modal */}
+      <Dialog open={privacyOpen} onOpenChange={setPrivacyOpen}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-background border-neon-cyan/30">
+          <DialogHeader>
+            <DialogTitle className="font-orbitron text-neon-cyan text-xl">
+              {t.footer.privacy}
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              {t.footer.lastUpdated}: {new Date().toLocaleDateString()}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 text-sm text-foreground/90 font-mono">
+            <p>{t.footer.privacyModal.intro}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.privacyModal.dataCollection}</h3>
+            <p>{t.footer.privacyModal.dataCollectionText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.privacyModal.useOfInfo}</h3>
+            <p>{t.footer.privacyModal.useOfInfoText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.privacyModal.dataSharing}</h3>
+            <p>{t.footer.privacyModal.dataSharingText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.privacyModal.security}</h3>
+            <p>{t.footer.privacyModal.securityText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.privacyModal.cookies}</h3>
+            <p>{t.footer.privacyModal.cookiesText}</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Terms Modal */}
+      <Dialog open={termsOpen} onOpenChange={setTermsOpen}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-background border-neon-cyan/30">
+          <DialogHeader>
+            <DialogTitle className="font-orbitron text-neon-cyan text-xl">
+              {t.footer.terms}
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              {t.footer.lastUpdated}: {new Date().toLocaleDateString()}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 text-sm text-foreground/90 font-mono">
+            <p>{t.footer.termsModal.intro}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.termsModal.acceptance}</h3>
+            <p>{t.footer.termsModal.acceptanceText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.termsModal.serviceUse}</h3>
+            <p>{t.footer.termsModal.serviceUseText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.termsModal.intellectualProperty}</h3>
+            <p>{t.footer.termsModal.intellectualPropertyText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.termsModal.liability}</h3>
+            <p>{t.footer.termsModal.liabilityText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.termsModal.modifications}</h3>
+            <p>{t.footer.termsModal.modificationsText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.termsModal.applicableLaw}</h3>
+            <p>{t.footer.termsModal.applicableLawText}</p>
+          </div>
+        </DialogContent>
+      </Dialog>
+      <Dialog open={docsOpen} onOpenChange={setDocsOpen}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-background border-neon-cyan/30">
+          <DialogHeader>
+            <DialogTitle className="font-orbitron text-neon-cyan text-xl">
+              {t.footer.docs}
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              {t.footer.lastUpdated}: {new Date().toLocaleDateString()}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 text-sm text-foreground/90 font-mono">
+            <p>{t.footer.docsModal.intro}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.methodology}</h3>
+            <p>{t.footer.docsModal.methodologyText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.developmentProcess}</h3>
+            <p>{t.footer.docsModal.developmentProcessText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.toolsStack}</h3>
+            <p>{t.footer.docsModal.toolsStackText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.qualityAssurance}</h3>
+            <p>{t.footer.docsModal.qualityAssuranceText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.communication}</h3>
+            <p>{t.footer.docsModal.communicationText}</p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </footer>
   );
 };

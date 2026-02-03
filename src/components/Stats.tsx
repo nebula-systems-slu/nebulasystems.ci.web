@@ -47,7 +47,7 @@ export const Stats = () => {
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-neon-cyan/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-neon-magenta/10 rounded-full blur-3xl" />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
             {t.stats.items.map((stat, index) => (
               <div
                 key={stat.label}

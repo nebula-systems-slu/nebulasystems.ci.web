@@ -16,146 +16,111 @@ interface TechnologySkill {
 
 interface Technology {
   name: string;
-  category: string;
-  status: string;
-  skills: TechnologySkill[];
+  categoryKey: string;
+  skills: { nameKey: string; descKey: string }[];
 }
 
 const technologies: Technology[] = [
   { 
     name: "React", 
-    category: "FRONTEND", 
-    status: "ACTIVE",
+    categoryKey: "frontend", 
     skills: [
-      { name: "Hooks & Context API", description: "Estado e gerenciamento avançado" },
-      { name: "React Query", description: "Cache e sincronização de dados" },
-      { name: "Component Architecture", description: "Componentes reutilizáveis e escaláveis" },
-      { name: "Performance Optimization", description: "Memoization, lazy loading, code splitting" },
+      { nameKey: "reactHooks", descKey: "reactHooksDesc" },
+      { nameKey: "reactQuery", descKey: "reactQueryDesc" },
+      { nameKey: "componentArch", descKey: "componentArchDesc" },
+      { nameKey: "perfOptimization", descKey: "perfOptimizationDesc" },
     ]
   },
   { 
     name: "TypeScript", 
-    category: "LANGUAGE", 
-    status: "ACTIVE",
+    categoryKey: "language", 
     skills: [
-      { name: "Type System", description: "Tipos avançados e generics" },
-      { name: "Decorators", description: "Metaprogramação e DI" },
-      { name: "Utility Types", description: "Partial, Pick, Omit, Record" },
-      { name: "Type Guards", description: "Validação de tipos em runtime" },
+      { nameKey: "typeSystem", descKey: "typeSystemDesc" },
+      { nameKey: "decorators", descKey: "decoratorsDesc" },
+      { nameKey: "utilityTypes", descKey: "utilityTypesDesc" },
+      { nameKey: "typeGuards", descKey: "typeGuardsDesc" },
     ]
   },
   { 
     name: "Node.js", 
-    category: "RUNTIME", 
-    status: "ACTIVE",
+    categoryKey: "runtime", 
     skills: [
-      { name: "Express/Fastify", description: "APIs REST e GraphQL" },
-      { name: "Streams", description: "Processamento de dados em tempo real" },
-      { name: "Worker Threads", description: "Paralelismo e performance" },
-      { name: "NPM/Yarn", description: "Gerenciamento de dependências" },
+      { nameKey: "expressFastify", descKey: "expressFastifyDesc" },
+      { nameKey: "streams", descKey: "streamsDesc" },
+      { nameKey: "workerThreads", descKey: "workerThreadsDesc" },
+      { nameKey: "npmYarn", descKey: "npmYarnDesc" },
     ]
   },
   { 
     name: "Python", 
-    category: "BACKEND", 
-    status: "ACTIVE",
+    categoryKey: "backend", 
     skills: [
-      { name: "FastAPI/Django", description: "Frameworks web modernos" },
-      { name: "Data Science", description: "Pandas, NumPy, Scikit-learn" },
-      { name: "Automation", description: "Scripts e automação de processos" },
-      { name: "Testing", description: "Pytest e coverage" },
+      { nameKey: "fastApiDjango", descKey: "fastApiDjangoDesc" },
+      { nameKey: "dataScience", descKey: "dataScienceDesc" },
+      { nameKey: "automation", descKey: "automationDesc" },
+      { nameKey: "testing", descKey: "testingDesc" },
     ]
   },
   { 
     name: "AWS", 
-    category: "CLOUD", 
-    status: "ACTIVE",
+    categoryKey: "cloud", 
     skills: [
-      { name: "EC2 & ECS", description: "Compute e containers" },
-      { name: "S3 & CloudFront", description: "Storage e CDN" },
-      { name: "Lambda", description: "Serverless functions" },
-      { name: "RDS & DynamoDB", description: "Databases gerenciados" },
-      { name: "Organizations", description: "Multi-account management" },
-      { name: "IAM & Security", description: "Controle de acesso e policies" },
+      { nameKey: "ec2Ecs", descKey: "ec2EcsDesc" },
+      { nameKey: "s3Cloudfront", descKey: "s3CloudfrontDesc" },
+      { nameKey: "ecr", descKey: "ecrDesc" },
+      { nameKey: "organizations", descKey: "organizationsDesc" },
+      { nameKey: "iamSecurity", descKey: "iamSecurityDesc" },
     ]
   },
-  { 
-    name: "Azure", 
-    category: "CLOUD", 
-    status: "ACTIVE",
-    skills: [
-      { name: "Azure Functions", description: "Serverless compute" },
-      { name: "App Service", description: "Web apps e APIs" },
-      { name: "Blob Storage", description: "Object storage escalável" },
-      { name: "Azure DevOps", description: "CI/CD pipelines" },
-      { name: "Cosmos DB", description: "Database NoSQL global" },
-    ]
-  },
+  
   { 
     name: "Docker", 
-    category: "CONTAINER", 
-    status: "ACTIVE",
+    categoryKey: "container", 
     skills: [
-      { name: "Dockerfile", description: "Build de imagens otimizadas" },
-      { name: "Docker Compose", description: "Multi-container applications" },
-      { name: "Registry", description: "Gestão de imagens privadas" },
-      { name: "Networking", description: "Redes e comunicação entre containers" },
-    ]
-  },
-  { 
-    name: "Kubernetes", 
-    category: "ORCHESTRATION", 
-    status: "ACTIVE",
-    skills: [
-      { name: "Deployments", description: "Rolling updates e rollbacks" },
-      { name: "Services & Ingress", description: "Load balancing e routing" },
-      { name: "ConfigMaps & Secrets", description: "Gerenciamento de configuração" },
-      { name: "Helm Charts", description: "Package management" },
-      { name: "Monitoring", description: "Prometheus e Grafana" },
+      { nameKey: "dockerfile", descKey: "dockerfileDesc" },
+      { nameKey: "dockerCompose", descKey: "dockerComposeDesc" },
+      { nameKey: "registry", descKey: "registryDesc" },
+      { nameKey: "networking", descKey: "networkingDesc" },
     ]
   },
   { 
     name: "PostgreSQL", 
-    category: "DATABASE", 
-    status: "ACTIVE",
+    categoryKey: "database", 
     skills: [
-      { name: "Query Optimization", description: "EXPLAIN e índices" },
-      { name: "Partitioning", description: "Tabelas particionadas" },
-      { name: "Extensions", description: "PostGIS, pg_trgm, etc" },
-      { name: "Replication", description: "Read replicas e HA" },
+      { nameKey: "queryOptimization", descKey: "queryOptimizationDesc" },
+      { nameKey: "partitioning", descKey: "partitioningDesc" },
+      { nameKey: "extensions", descKey: "extensionsDesc" },
+      { nameKey: "replication", descKey: "replicationDesc" },
     ]
   },
   { 
     name: "MongoDB", 
-    category: "NOSQL", 
-    status: "ACTIVE",
+    categoryKey: "nosql", 
     skills: [
-      { name: "Aggregation Pipeline", description: "Processamento de dados" },
-      { name: "Indexing", description: "Compound e text indexes" },
-      { name: "Sharding", description: "Horizontal scaling" },
-      { name: "Atlas", description: "Cloud management" },
+      { nameKey: "aggregation", descKey: "aggregationDesc" },
+      { nameKey: "indexing", descKey: "indexingDesc" },
+      { nameKey: "sharding", descKey: "shardingDesc" },
+      { nameKey: "atlas", descKey: "atlasDesc" },
     ]
   },
   { 
     name: "Terraform", 
-    category: "IAC", 
-    status: "ACTIVE",
+    categoryKey: "iac", 
     skills: [
-      { name: "Modules", description: "Código reutilizável" },
-      { name: "State Management", description: "Remote state e locking" },
-      { name: "Multi-cloud", description: "AWS, Azure, GCP" },
-      { name: "Workspaces", description: "Ambientes isolados" },
+      { nameKey: "modules", descKey: "modulesDesc" },
+      { nameKey: "stateManagement", descKey: "stateManagementDesc" },
+      { nameKey: "multiCloud", descKey: "multiCloudDesc" },
+      { nameKey: "workspaces", descKey: "workspacesDesc" },
     ]
   },
   { 
     name: "Next.js", 
-    category: "FRAMEWORK", 
-    status: "ACTIVE",
+    categoryKey: "framework", 
     skills: [
-      { name: "SSR/SSG", description: "Rendering strategies" },
-      { name: "API Routes", description: "Backend integrado" },
-      { name: "App Router", description: "Server components" },
-      { name: "Image Optimization", description: "Lazy loading automático" },
+      { nameKey: "ssrSsg", descKey: "ssrSsgDesc" },
+      { nameKey: "apiRoutes", descKey: "apiRoutesDesc" },
+      { nameKey: "appRouter", descKey: "appRouterDesc" },
+      { nameKey: "imageOptimization", descKey: "imageOptimizationDesc" },
     ]
   },
 ];
@@ -163,6 +128,18 @@ const technologies: Technology[] = [
 export const TechStack = () => {
   const [selectedTech, setSelectedTech] = useState<Technology | null>(null);
   const { t } = useLanguage();
+
+  const getCategory = (categoryKey: string) => {
+    return t.tech.categories[categoryKey as keyof typeof t.tech.categories] || categoryKey.toUpperCase();
+  };
+
+  const getSkillName = (nameKey: string) => {
+    return t.tech.skills[nameKey as keyof typeof t.tech.skills] || nameKey;
+  };
+
+  const getSkillDesc = (descKey: string) => {
+    return t.tech.skills[descKey as keyof typeof t.tech.skills] || descKey;
+  };
 
   return (
     <section id="tech" className="py-24 relative overflow-hidden">
@@ -209,7 +186,7 @@ export const TechStack = () => {
               
               {/* Category */}
               <div className="text-xs text-muted-foreground font-orbitron tracking-wider">
-                {tech.category}
+                {getCategory(tech.categoryKey)}
               </div>
 
               {/* Skills Count */}
@@ -262,7 +239,7 @@ export const TechStack = () => {
           <DialogHeader>
             <DialogTitle className="font-orbitron text-2xl flex items-center gap-3">
               <span className="text-primary">{selectedTech?.name}</span>
-              <span className="cyber-badge text-xs">{selectedTech?.category}</span>
+              <span className="cyber-badge text-xs">{selectedTech && getCategory(selectedTech.categoryKey)}</span>
             </DialogTitle>
           </DialogHeader>
           
@@ -273,16 +250,16 @@ export const TechStack = () => {
             
             {selectedTech?.skills.map((skill) => (
               <div 
-                key={skill.name}
+                key={skill.nameKey}
                 className="flex items-start gap-3 p-3 border border-border/30 hover:border-neon-cyan/50 transition-colors rounded"
               >
                 <CheckCircle className="w-4 h-4 text-neon-green mt-0.5 flex-shrink-0" />
                 <div>
                   <div className="font-orbitron text-sm text-foreground">
-                    {skill.name}
+                    {getSkillName(skill.nameKey)}
                   </div>
                   <div className="text-xs text-muted-foreground font-rajdhani">
-                    {skill.description}
+                    {getSkillDesc(skill.descKey)}
                   </div>
                 </div>
               </div>
