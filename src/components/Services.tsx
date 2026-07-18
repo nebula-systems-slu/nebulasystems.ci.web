@@ -1,7 +1,7 @@
 import { Cloud, Code2, Database, Rocket, Layers, Shield, Wrench, ChevronRight, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import servicesBg from "@/assets/services-bg.jpg";
+import servicesBg from "@/assets/services-bg.webp";
 import {
   Dialog,
   DialogContent,
@@ -66,8 +66,8 @@ export const Services = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background/95" />
       <div className="absolute inset-0 cyber-grid opacity-10" />
-      <div className="absolute -top-48 -left-48 w-96 h-96 bg-neon-magenta/10 rounded-full blur-3xl" />
-      <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-neon-cyan/10 rounded-full blur-3xl" />
+      <div className="absolute -top-48 -left-48 w-96 h-96 bg-neon-magenta/5 rounded-full blur-3xl" />
+      <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-neon-cyan/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
@@ -78,9 +78,9 @@ export const Services = () => {
           </div>
           <h2 className="text-3xl md:text-5xl font-orbitron font-bold mt-4 mb-6">
             {t.services.title}{" "}
-            <span className="gradient-text neon-text">{t.services.titleHighlight}</span>
+            <span className="text-primary">{t.services.titleHighlight}</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-rajdhani text-lg">
+          <p className="text-foreground/70 max-w-2xl mx-auto font-rajdhani text-lg">
             {t.services.subtitle}
           </p>
         </div>

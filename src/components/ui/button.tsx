@@ -15,7 +15,7 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        cyber: "bg-gradient-to-r from-neon-cyan via-neon-magenta to-neon-orange text-background font-bold hover:shadow-[0_0_30px_hsl(var(--neon-cyan)/0.5),0_0_60px_hsl(var(--neon-magenta)/0.3)] border-none relative overflow-hidden",
+        cyber: "bg-primary text-background font-bold hover:bg-primary/90 hover:shadow-[0_0_30px_hsl(var(--neon-cyan)/0.5)] border-none relative overflow-hidden",
         neon: "bg-primary/10 text-primary border-2 border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-[0_0_30px_hsl(var(--neon-cyan)/0.6)] transition-all duration-300",
         glow: "bg-transparent border border-primary/30 text-foreground hover:text-primary hover:border-primary/60 hover:shadow-[0_0_25px_hsl(var(--neon-cyan)/0.4)] transition-all duration-300",
       },

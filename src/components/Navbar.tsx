@@ -12,6 +12,8 @@ export const Navbar = () => {
   const navLinks = [
     { label: t.nav.inicio, href: "#hero" },
     { label: t.nav.servicos, href: "#services" },
+    { label: t.nav.processo, href: "#process" },
+    { label: t.nav.arquitetura, href: "#architecture" },
     { label: t.nav.tech, href: "#tech" },
     { label: t.nav.sobre, href: "#about" },
     { label: t.nav.contato, href: "#contact" },
@@ -34,7 +36,7 @@ export const Navbar = () => {
       }`}
     >
       {/* Top Bar - Decorative */}
-      <div className="h-1 w-full bg-gradient-to-r from-neon-cyan via-neon-magenta to-neon-orange" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-neon-cyan to-transparent" />
 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">

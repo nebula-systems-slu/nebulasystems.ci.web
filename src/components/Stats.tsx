@@ -1,6 +1,6 @@
 import { Activity } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import statsBg from "@/assets/stats-bg.jpg";
+import statsBg from "@/assets/stats-bg.webp";
 
 export const Stats = () => {
   const { t } = useLanguage();
@@ -25,7 +25,7 @@ export const Stats = () => {
           </div>
           <h2 className="text-3xl md:text-4xl font-orbitron font-bold mt-4 mb-6 text-foreground">
             {t.stats.title}{" "}
-            <span className="gradient-text neon-text">{t.stats.titleHighlight}</span>
+            <span className="text-primary">{t.stats.titleHighlight}</span>
           </h2>
           <p className="text-foreground/80 mb-4 leading-relaxed font-rajdhani text-lg max-w-3xl mx-auto">
             {t.stats.description1}
@@ -39,15 +39,15 @@ export const Stats = () => {
         <div className="cyber-card p-8 md:p-12 relative overflow-hidden mb-12">
           {/* Corner Accents */}
           <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-neon-cyan/50" />
-          <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-neon-magenta/50" />
-          <div className="absolute bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-neon-magenta/50" />
+          <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-neon-cyan/50" />
+          <div className="absolute bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-neon-cyan/50" />
           <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-neon-cyan/50" />
 
           {/* Background Glow */}
-          <div className="absolute -top-24 -right-24 w-48 h-48 bg-neon-cyan/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-neon-magenta/10 rounded-full blur-3xl" />
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-neon-cyan/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-neon-magenta/5 rounded-full blur-3xl" />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
             {t.stats.items.map((stat, index) => (
               <div
                 key={stat.label}
@@ -55,7 +55,7 @@ export const Stats = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-2xl mb-2">{stat.icon}</div>
-                <div className="text-4xl md:text-5xl font-orbitron font-bold gradient-text neon-text mb-2">
+                <div className="text-4xl md:text-5xl font-orbitron font-bold text-primary mb-2">
                   {stat.value}
                 </div>
                 <div className="text-muted-foreground text-xs font-orbitron tracking-widest">

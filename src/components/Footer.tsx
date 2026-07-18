@@ -1,4 +1,4 @@
-import { Github, Linkedin, Terminal } from "lucide-react";
+import { Github, Terminal } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState } from "react";
 import {
@@ -11,7 +11,7 @@ import {
 
 export const Footer = () => {
   const { t } = useLanguage();
-  const version = import.meta.env.VITE_APP_VERSION || "1.0.0";
+  const version = typeof __APP_VERSION__ !== "undefined" ? __APP_VERSION__ : "0.0.0";
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [termsOpen, setTermsOpen] = useState(false);
   const [docsOpen, setDocsOpen] = useState(false);
@@ -61,18 +61,21 @@ export const Footer = () => {
           {/* Social */}
           <div className="flex items-center gap-3">
             {[
-              { icon: Github, href: "#" },
-              { icon: Linkedin, href: "#" },
-              
-            ].map((social, index) => (
+              { icon: Github, href: "https://github.com/nebula-systems-slu", label: "GitHub" },
+            ].map((social, index) => {
+              const external = social.href.startsWith("http");
+              return (
               <a
                 key={index}
                 href={social.href}
+                aria-label={social.label}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="w-10 h-10 border border-border/50 flex items-center justify-center text-muted-foreground hover:text-neon-cyan hover:border-neon-cyan/50 hover:shadow-[0_0_15px_hsl(var(--neon-cyan)/0.3)] transition-all"
               >
                 <social.icon className="w-4 h-4" />
               </a>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -142,6 +145,8 @@ export const Footer = () => {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* Docs Modal */}
       <Dialog open={docsOpen} onOpenChange={setDocsOpen}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto bg-background border-neon-cyan/30">
           <DialogHeader>
@@ -156,12 +161,12 @@ export const Footer = () => {
             <p>{t.footer.docsModal.intro}</p>
             <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.methodology}</h3>
             <p>{t.footer.docsModal.methodologyText}</p>
-            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.developmentProcess}</h3>
-            <p>{t.footer.docsModal.developmentProcessText}</p>
-            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.toolsStack}</h3>
-            <p>{t.footer.docsModal.toolsStackText}</p>
-            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.qualityAssurance}</h3>
-            <p>{t.footer.docsModal.qualityAssuranceText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.process}</h3>
+            <p>{t.footer.docsModal.processText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.tools}</h3>
+            <p>{t.footer.docsModal.toolsText}</p>
+            <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.quality}</h3>
+            <p>{t.footer.docsModal.qualityText}</p>
             <h3 className="font-orbitron text-neon-cyan text-sm mt-4">{t.footer.docsModal.communication}</h3>
             <p>{t.footer.docsModal.communicationText}</p>
           </div>
