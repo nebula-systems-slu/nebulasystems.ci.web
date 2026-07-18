@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @layer base {
   :root {
@@ -283,13 +281,12 @@
   /* Divider Lines */
   .neon-divider {
     height: 1px;
-    background: linear-gradient(90deg, 
-      transparent, 
-      hsl(var(--neon-cyan)), 
-      hsl(var(--neon-magenta)), 
+    background: linear-gradient(90deg,
+      transparent,
+      hsl(var(--neon-cyan) / 0.7),
       transparent
     );
-    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5);
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.3);
   }
 }
 

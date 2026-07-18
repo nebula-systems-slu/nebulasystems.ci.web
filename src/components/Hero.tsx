@@ -1,29 +1,31 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Terminal, Cpu, Rocket } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import nebulaHero from "@/assets/nebula-hero.jpg";
-import heroNebulaNew2 from "@/assets/hero-nebula-new-2.jpg";
-import heroNebula3 from "@/assets/hero-nebula-3.jpg";
-import heroNebula4 from "@/assets/hero-nebula-4.jpg";
-import heroNebula5 from "@/assets/hero-nebula-5.jpg";
-import heroWorkspace1 from "@/assets/hero-workspace-1.jpg";
-import heroControlRoom from "@/assets/hero-control-room.jpg";
-import heroSatelliteStation from "@/assets/hero-satellite-station.jpg";
+// PONTO DE TROCA DO CARROSSEL:
+// para usar as imagens profissionais novas, importe-as aqui e adicione ao array
+// `heroImages` abaixo (mande os arquivos que eu converto p/ WebP otimizado).
+// Set atual curado para a direção cyan/azul (coerente e legível sob o texto).
+// Removidas da rotação (arquivos ainda em src/assets, é só reimportar se quiser):
+// hero-nebula-4 (laranja saturada), hero-nebula-5 (verde fora da paleta),
+// hero-workspace-1 (mesa poluída), hero-control-room (sala escura/suja).
+import nebulaHero from "@/assets/nebula-hero.webp";
+import heroNebulaNew2 from "@/assets/hero-nebula-new-2.webp";
+import heroNebula3 from "@/assets/hero-nebula-3.webp";
+import heroSatelliteStation from "@/assets/hero-satellite-station.webp";
 
 const heroImages = [
   nebulaHero,
   heroNebulaNew2,
   heroNebula3,
-  heroNebula4,
-  heroNebula5,
-  heroWorkspace1,
-  heroControlRoom,
   heroSatelliteStation,
 ];
 
 export const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Only download images that have been shown (plus the next one to preload).
+  // Avoids fetching all hero images on initial page load.
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(() => new Set([0]));
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -33,6 +35,17 @@ export const Hero = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const nextIndex = (currentImageIndex + 1) % heroImages.length;
+    setLoadedImages((prev) => {
+      if (prev.has(currentImageIndex) && prev.has(nextIndex)) return prev;
+      const next = new Set(prev);
+      next.add(currentImageIndex);
+      next.add(nextIndex);
+      return next;
+    });
+  }, [currentImageIndex]);
 
   return (
     <section
@@ -44,12 +57,13 @@ export const Hero = () => {
         <div
           key={index}
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000"
-          style={{ 
-            backgroundImage: `url(${image})`,
+          style={{
+            backgroundImage: loadedImages.has(index) ? `url(${image})` : undefined,
             opacity: index === currentImageIndex ? 1 : 0,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
+          <div className="absolute inset-0 bg-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
         </div>
       ))}
 
@@ -59,6 +73,8 @@ export const Hero = () => {
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
+            aria-label={`Ir para imagem ${index + 1} de ${heroImages.length}`}
+            aria-current={index === currentImageIndex}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
               index === currentImageIndex 
                 ? 'bg-primary w-6 shadow-[0_0_10px_hsl(var(--primary))]' 
@@ -68,116 +84,81 @@ export const Hero = () => {
         ))}
       </div>
 
-      {/* Scan Lines Overlay */}
-      <div className="absolute inset-0 scan-lines pointer-events-none opacity-30" />
-
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 cyber-grid opacity-20" />
-
-      {/* Animated Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-neon-cyan/10 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-magenta/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }} />
-      <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-neon-orange/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "4s" }} />
-
-      {/* Floating Tech Elements */}
-      <div className="absolute top-20 left-10 text-neon-cyan/20 animate-float hidden lg:block">
-        <Terminal className="w-12 h-12" />
-      </div>
-      <div className="absolute bottom-32 right-20 text-neon-magenta/20 animate-float hidden lg:block" style={{ animationDelay: "3s" }}>
-        <Cpu className="w-16 h-16" />
-      </div>
-      <div className="absolute top-1/3 right-10 text-neon-orange/20 animate-float hidden lg:block" style={{ animationDelay: "1.5s" }}>
-        <Rocket className="w-10 h-10" />
-      </div>
+      {/* Subtle grid + single ambient glow (restrained) */}
+      <div className="absolute inset-0 cyber-grid opacity-[0.05] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-neon-cyan/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Terminal Badge */}
-          <div className="inline-flex items-center gap-3 cyber-card px-5 py-3 mb-8 animate-fade-in">
-            <span className="text-neon-green font-orbitron text-xs">{">"}</span>
-            <span className="text-sm text-muted-foreground font-rajdhani tracking-wide">
-              {t.hero.systemInit} // <span className="text-primary">{t.hero.missionActive}</span>
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-3 mb-6 opacity-0 animate-fade-in">
+            <span className="w-8 h-px bg-neon-cyan" />
+            <span className="text-xs md:text-sm font-orbitron uppercase tracking-[0.25em] text-neon-cyan">
+              {t.hero.eyebrow}
             </span>
-            <span className="w-2 h-4 bg-neon-green animate-pulse" />
+            <span className="w-8 h-px bg-neon-cyan" />
           </div>
 
-          {/* Main Title */}
+          {/* Headline */}
           <h1
-            className="text-4xl md:text-6xl lg:text-8xl font-orbitron font-bold mb-6 leading-tight opacity-0 animate-fade-in tracking-tight"
-            style={{ animationDelay: "0.2s" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-orbitron font-bold leading-[1.12] tracking-tight text-balance mb-6 opacity-0 animate-fade-in"
+            style={{ animationDelay: "0.1s" }}
           >
-            <span className="text-foreground">{t.hero.title1}</span>
-            <br />
-            <span className="gradient-text neon-text">{t.hero.title2}</span>
+            <span className="text-foreground">{t.hero.title1}</span>{" "}
+            <span className="text-primary">{t.hero.title2}</span>
           </h1>
 
-          {/* Subtitle with brackets */}
-          <div
-            className="flex items-center justify-center gap-4 mb-8 opacity-0 animate-fade-in"
-            style={{ animationDelay: "0.4s" }}
+          {/* Subtitle */}
+          <p
+            className="text-lg md:text-xl text-foreground/75 font-rajdhani max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in"
+            style={{ animationDelay: "0.2s" }}
           >
-            <span className="text-neon-magenta font-orbitron text-2xl">[</span>
-            <p className="text-lg md:text-xl text-muted-foreground font-rajdhani max-w-2xl">
-              {t.hero.subtitle}
-            </p>
-            <span className="text-neon-magenta font-orbitron text-2xl">]</span>
-          </div>
-
-          {/* Stats Row */}
-          <div
-            className="flex flex-wrap justify-center gap-8 mb-10 opacity-0 animate-fade-in"
-            style={{ animationDelay: "0.5s" }}
-          >
-            {[
-              { value: "8+", label: t.hero.stats.years },
-              //{ value: "50+", label: t.hero.stats.projects },
-              { value: "FULL", label: t.hero.stats.stack },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-orbitron font-bold text-primary neon-text">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-muted-foreground font-orbitron tracking-widest">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+            {t.hero.subtitle}
+          </p>
 
           {/* CTA Buttons */}
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 animate-fade-in"
-            style={{ animationDelay: "0.6s" }}
+            style={{ animationDelay: "0.3s" }}
           >
-            <Button variant="cyber" size="lg">
-              {t.hero.cta.startProject}
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-            <Button variant="outline" size="lg">
-              {t.hero.cta.viewServices}
-            </Button>
+            <a href="#contact">
+              <Button variant="cyber" size="lg">
+                {t.hero.cta.startProject}
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </a>
+            <a href="#services">
+              <Button variant="outline" size="lg">
+                {t.hero.cta.viewServices}
+              </Button>
+            </a>
           </div>
 
-          {/* Tech Pills */}
+          {/* Tech stack strip */}
           <div
-            className="flex flex-wrap justify-center gap-3 mt-12 opacity-0 animate-fade-in"
-            style={{ animationDelay: "0.8s" }}
+            className="mt-12 pt-6 border-t border-border/40 max-w-xl mx-auto opacity-0 animate-fade-in"
+            style={{ animationDelay: "0.45s" }}
           >
-            {[
-              { icon: "⚡", label: t.hero.pills.cloud, color: "cyan" },
-              { icon: "🛠", label: t.hero.pills.devops, color: "magenta" },
-              { icon: "🚀", label: t.hero.pills.deploy, color: "orange" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className={`cyber-badge ${item.color === 'magenta' ? 'cyber-badge-magenta' : ''}`}
-              >
-                <span className="mr-2">{item.icon}</span>
-                {item.label}
-              </div>
-            ))}
+            <p className="text-xs md:text-sm font-orbitron tracking-wider text-muted-foreground">
+              {t.hero.stack}
+            </p>
           </div>
+
+          {/* Founder credit */}
+          <a
+            href="#founder"
+            className="inline-flex items-center gap-3 mt-6 opacity-0 animate-fade-in group"
+            style={{ animationDelay: "0.55s" }}
+          >
+            <span className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-xs font-orbitron font-bold text-background">
+              {t.founder.name.charAt(0)}
+            </span>
+            <span className="text-sm text-muted-foreground font-rajdhani group-hover:text-foreground transition-colors">
+              {t.hero.founderCredit}{" "}
+              <span className="text-foreground font-medium">{t.founder.name}</span>
+            </span>
+          </a>
         </div>
       </div>
 

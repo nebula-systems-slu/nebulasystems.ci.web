@@ -1,7 +1,7 @@
 import { Cpu, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import techBg from "@/assets/tech-bg.jpg";
+import techBg from "@/assets/tech-bg.webp";
 import {
   Dialog,
   DialogContent,
@@ -72,7 +72,16 @@ const technologies: Technology[] = [
       { nameKey: "iamSecurity", descKey: "iamSecurityDesc" },
     ]
   },
-  
+  { 
+    name: "Vercel", 
+    categoryKey: "deploy", 
+    skills: [
+      { nameKey: "vercelDeploy", descKey: "vercelDeployDesc" },
+      { nameKey: "vercelEdge", descKey: "vercelEdgeDesc" },
+      { nameKey: "vercelAnalytics", descKey: "vercelAnalyticsDesc" },
+      { nameKey: "vercelPreview", descKey: "vercelPreviewDesc" },
+    ]
+  },
   { 
     name: "Docker", 
     categoryKey: "container", 
@@ -160,9 +169,9 @@ export const TechStack = () => {
           </div>
           <h2 className="text-3xl md:text-5xl font-orbitron font-bold mt-4 mb-6">
             {t.tech.title}{" "}
-            <span className="gradient-text neon-text">{t.tech.titleHighlight}</span>
+            <span className="text-primary">{t.tech.titleHighlight}</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-rajdhani text-lg">
+          <p className="text-foreground/70 max-w-2xl mx-auto font-rajdhani text-lg">
             {t.tech.subtitle}
           </p>
         </div>
@@ -197,7 +206,7 @@ export const TechStack = () => {
               {/* Status Bar */}
               <div className="mt-3 h-1 bg-muted/50 rounded overflow-hidden">
                 <div 
-                  className="h-full bg-gradient-to-r from-neon-cyan to-neon-magenta w-0 group-hover:w-full transition-all duration-700"
+                  className="h-full bg-primary w-0 group-hover:w-full transition-all duration-700"
                 />
               </div>
             </div>

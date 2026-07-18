@@ -4,6 +4,8 @@ export const translations = {
     nav: {
       inicio: "INÍCIO",
       servicos: "SERVIÇOS",
+      processo: "PROCESSO",
+      arquitetura: "ARQUITETURA",
       tech: "TECH",
       sobre: "SOBRE",
       contato: "CONTATO",
@@ -12,26 +14,16 @@ export const translations = {
 
     // Hero
     hero: {
-      systemInit: "INICIANDO SISTEMA",
-      missionActive: "MISSÃO ATIVA",
-      title1: "DESENVOLVIMENTO",
-      title2: "<SOFTWARE/>",
+      eyebrow: "Engenharia de software & cloud",
+      title1: "Software sob medida,",
+      title2: "da ideia à produção.",
       subtitle:
-        "Engenharia de software e infraestrutura cloud para missões críticas. Construímos a base digital do seu negócio.",
-      criticalMissions: "missões críticas",
-      stats: {
-        years: "ANOS",
-        projects: "PROJETOS",
-        stack: "STACK",
-      },
+        "Aplicações web e infraestrutura AWS para empresas que dependem de tecnologia que funciona. Você fala direto com o engenheiro — sem intermediários.",
+      stack: "React · TypeScript · Node.js · AWS · Docker · Terraform",
+      founderCredit: "Fundado e desenvolvido por",
       cta: {
-        startProject: "INICIAR PROJETO",
+        startProject: "ENTRAR EM CONTATO",
         viewServices: "VER SERVIÇOS",
-      },
-      pills: {
-        cloud: "CLOUD",
-        devops: "DEVOPS",
-        deploy: "DEPLOY",
       },
       scroll: "SCROLL",
     },
@@ -157,6 +149,7 @@ export const translations = {
         nosql: "NOSQL",
         iac: "IAC",
         framework: "FRAMEWORK",
+        deploy: "DEPLOY",
       },
       skills: {
         // React
@@ -206,16 +199,16 @@ export const translations = {
         organizationsDesc: "Multi-account management",
         iamSecurity: "IAM & Security",
         iamSecurityDesc: "Controle de acesso e policies",
-        // Azure
-        azureFunctions: "Azure Functions",
-        azureFunctionsDesc: "Serverless compute",
-        appService: "App Service",
-        appServiceDesc: "Web apps e APIs",
-        blobStorage: "Blob Storage",
-        blobStorageDesc: "Object storage escalável",
-        azureDevOps: "Azure DevOps",
-        azureDevOpsDesc: "CI/CD pipelines",
-        cosmosDb: "Cosmos DB",
+        // Vercel
+        vercelDeploy: "Deploy Automático",
+        vercelDeployDesc: "Deploy contínuo a partir do Git",
+        vercelEdge: "Edge Functions",
+        vercelEdgeDesc: "Funções serverless na edge",
+        vercelAnalytics: "Web Analytics",
+        vercelAnalyticsDesc: "Métricas de performance",
+        vercelPreview: "Preview Deployments",
+        vercelPreviewDesc: "Ambientes de preview por branch",
+        // Keep cosmosDb for compatibility but unused
         cosmosDbDesc: "Database NoSQL global",
         // Docker
         dockerfile: "Dockerfile",
@@ -267,23 +260,23 @@ export const translations = {
 
     // Stats / About
     stats: {
-      badge: "SOBRE A EMPRESA",
+      badge: "SOBRE A MISSÃO",
       title: "ENGENHARIA DE",
       titleHighlight: "SOFTWARE",
       description1:
-        "A empresa atua no desenvolvimento de sistemas de software e arquiteturas cloud de alta performance, com foco em código limpo, escalável e infraestrutura bem projetada.",
+        "Sou um desenvolvedor solo especializado em construir sistemas de software e infraestrutura cloud de alta performance. Minha missão é transformar ideias complexas em código limpo e escalável.",
       description2:
-        "Os projetos são conduzidos com atuação direta do engenheiro responsável, atendendo desde startups até ambientes corporativos e operações enterprise.",
+        "Desde startups até operações enterprise, entrego soluções que funcionam na escala e velocidade que seu negócio exige.",
       items: [
-        //{ value: "50+", label: "PROJETOS ENTREGUES", icon: "🚀" },
-        { value: "8+", label: "ANOS CODANDO", icon: "⌨️" },
-        { value: "99.9%", label: "SLA GARANTIDO", icon: "📊" },
-        { value: "24/7", label: "DEDICAÇÃO", icon: "🛡" },
+        { value: "8+", label: "ANOS DE EXPERIÊNCIA", icon: "⌨️" },
+        { value: "1:1", label: "ACESSO DIRETO AO FUNDADOR", icon: "🤝" },
+        { value: "AWS", label: "CLOUD & INFRAESTRUTURA", icon: "☁️" },
+        { value: "CI/CD", label: "ENTREGAS VERSIONADAS", icon: "🔁" },
       ],
       terminal: {
         command: "dev_info",
         type: "type",
-        soloDeveloper: "engenheiro de software",
+        soloDeveloper: "solo developer",
         experience: "experience",
         experienceValue: "8+ years",
         stack: "stack",
@@ -299,18 +292,134 @@ export const translations = {
       ],
     },
 
+    // Founder
+    founder: {
+      label: "QUEM CONSTRÓI",
+      name: "Alberto",
+      role: "Fundador & Engenheiro de Software · Nebula Systems",
+      bio: "Sou engenheiro de software com 8+ anos construindo aplicações web e infraestrutura em nuvem. Na Nebula Systems você trabalha diretamente comigo — sem camadas, sem repasse para júnior. Cuido do projeto de ponta a ponta: da arquitetura ao deploy na AWS e à evolução contínua.",
+      boutique: "Boutique, não fábrica: acesso direto ao engenheiro que escreve o código.",
+      photoPlaceholder: "sua foto aqui",
+      links: {
+        linkedin: "LinkedIn",
+        github: "GitHub",
+        email: "E-mail",
+      },
+    },
+
+    // Architecture
+    architecture: {
+      badge: "ARQUITETURA DE REFERÊNCIA",
+      title: "COMO EU",
+      titleHighlight: "CONSTRUO",
+      subtitle: "Padrões que uso em produção — escaláveis, versionados e seguros. Clique para ver cada arquitetura em detalhe.",
+      viewDetail: "ver em detalhe",
+      items: [
+        {
+          title: "Aplicação Web em produção",
+          caption: "Alta disponibilidade com containers e cache",
+          points: [
+            "CloudFront + WAF na borda",
+            "ECS Fargate com auto-scaling",
+            "RDS Multi-AZ + ElastiCache",
+            "VPC privada, infra em Terraform (IaC)",
+          ],
+        },
+        {
+          title: "Pipeline CI/CD",
+          caption: "Do commit à produção, sem downtime",
+          points: [
+            "Testes automatizados a cada Pull Request",
+            "Build e push de imagem para o ECR",
+            "Deploy rolling no ECS",
+            "Rollback automático em falha de health check",
+          ],
+        },
+        {
+          title: "Arquitetura Serverless",
+          caption: "Escala automática, custo por uso",
+          points: [
+            "API Gateway + Lambda",
+            "DynamoDB on-demand",
+            "Autenticação com Cognito",
+            "Sem servidores para manter",
+          ],
+        },
+      ],
+    },
+
+    // Process
+    process: {
+      badge: "FLUXO DE DESENVOLVIMENTO",
+      title: "NOSSO",
+      titleHighlight: "PROCESSO",
+      subtitle: "Cada projeto segue um fluxo estruturado para garantir qualidade, escalabilidade e redução de riscos.",
+      stepLabel: "ETAPA",
+      steps: [
+        {
+          title: "Ideia → Estrutura",
+          items: [
+            "Entendimento do problema e contexto do negócio",
+            "Definição da solução e escopo do projeto",
+            "Mapeamento de requisitos e objetivos",
+          ],
+          note: null,
+        },
+        {
+          title: "Design e Prototipação",
+          items: [
+            "Wireframes e mockups visuais",
+            "Fluxos de usuário e jornadas",
+            "Validação antes de escrever código",
+          ],
+          note: "Protótipos interativos para aprovação visual",
+        },
+        {
+          title: "Arquitetura",
+          items: [
+            "Definição técnica e escolha de stack",
+            "Planejamento de escalabilidade",
+            "Organização do sistema e módulos",
+          ],
+          note: "Alinhado com ISO/IEC 42010:2022",
+        },
+        {
+          title: "Desenvolvimento",
+          items: [
+            "Implementação com boas práticas",
+            "Code review e testes automatizados",
+            "Versionamento e CI/CD",
+          ],
+          note: null,
+        },
+        {
+          title: "Entrega e Evolução",
+          items: [
+            "Deploy em ambiente de produção",
+            "Monitoramento e observabilidade",
+            "Melhorias contínuas e suporte",
+          ],
+          note: null,
+        },
+      ],
+      quote: "Antes de escrever código, estruturamos a solução visual e tecnicamente — reduzindo riscos e retrabalho.",
+      videoPreview: "PREVIEW DO PROCESSO",
+      watchVideo: "Assista ao vídeo demonstrativo",
+      videoComingSoon: "Vídeo demonstrativo em breve",
+    },
+
     // Contact
     contact: {
       badge: "INICIAR CONEXÃO",
       title: "PRONTO PARA",
       titleHighlight: "DECOLAR",
       subtitle:
-        "Inicie uma transmissão e descubra como posso construir a solução perfeita para seu negócio.",
+        "Inicie uma transmissão e descubra como posso engenheirar a solução perfeita para sua missão.",
       cta: "INICIAR TRANSMISSÃO",
       status: "CANAL ABERTO // RESPOSTA EM < 24H",
       info: [
         { title: "EMAIL", value: "albertojr11@hotmail.com" },
-        { title: "COMM LINK", value: "+55 (71) 9 9399-9204" },
+        { title: "WHATSAPP", value: "+55 (71) 9 9399-9204" },
         { title: "BASE", value: "Bahia, Brasil" },
       ],
     },
@@ -326,61 +435,45 @@ export const translations = {
       lastUpdated: "Última atualização",
       privacyModal: {
         intro: "A Nebula Systems, inscrita no CNPJ sob o nº 63.551.104/0001-04, respeita a privacidade dos usuários e está comprometida com a proteção dos dados pessoais tratados em suas operações, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 – LGPD).",
-  
-  dataCollection: "1. Coleta de Dados",
-  dataCollectionText: "Coletamos apenas dados pessoais fornecidos voluntariamente pelo usuário, como nome e endereço de e-mail, por meio de formulários de contato. Informações técnicas, como endereço IP, tipo de navegador e páginas acessadas, podem ser coletadas automaticamente para fins estatísticos e de segurança.",
-  
-  useOfInfo: "2. Uso das Informações",
-  useOfInfoText: "Os dados pessoais coletados são utilizados para responder solicitações de contato, fornecer informações sobre serviços, melhorar a experiência do usuário e cumprir obrigações legais e regulatórias. Os dados são tratados apenas pelo tempo necessário para atender a essas finalidades.",
-  
-  dataSharing: "3. Compartilhamento de Dados",
-  dataSharingText: "A Nebula Systems não comercializa dados pessoais. O compartilhamento poderá ocorrer apenas quando necessário para cumprimento de obrigações legais, execução de serviços contratados ou proteção dos direitos da empresa.",
-  
-  security: "4. Segurança",
-  securityText: "Adotamos medidas técnicas e organizacionais adequadas para proteger os dados pessoais contra acessos não autorizados, perda, alteração ou divulgação indevida, utilizando boas práticas de segurança da informação compatíveis com o mercado.",
-  
-  cookies: "5. Cookies",
-  cookiesText: "O site pode utilizar cookies estritamente necessários para seu funcionamento e para análise de desempenho. O usuário pode configurar seu navegador para recusar cookies, ciente de que algumas funcionalidades podem ser afetadas.",
+        dataCollection: "1. Coleta de Dados",
+        dataCollectionText: "Coletamos apenas dados pessoais fornecidos voluntariamente pelo usuário, como nome e endereço de e-mail, por meio de formulários de contato. Informações técnicas, como endereço IP, tipo de navegador e páginas acessadas, podem ser coletadas automaticamente para fins estatísticos e de segurança.",
+        useOfInfo: "2. Uso das Informações",
+        useOfInfoText: "Os dados pessoais coletados são utilizados para responder solicitações de contato, fornecer informações sobre serviços, melhorar a experiência do usuário e cumprir obrigações legais e regulatórias. Os dados são tratados apenas pelo tempo necessário para atender a essas finalidades.",
+        dataSharing: "3. Compartilhamento de Dados",
+        dataSharingText: "A Nebula Systems não comercializa dados pessoais. O compartilhamento poderá ocorrer apenas quando necessário para cumprimento de obrigações legais, execução de serviços contratados ou proteção dos direitos da empresa.",
+        security: "4. Segurança",
+        securityText: "Adotamos medidas técnicas e organizacionais adequadas para proteger os dados pessoais contra acessos não autorizados, perda, alteração ou divulgação indevida, utilizando boas práticas de segurança da informação compatíveis com o mercado.",
+        cookies: "5. Cookies",
+        cookiesText: "O site pode utilizar cookies estritamente necessários para seu funcionamento e para análise de desempenho. O usuário pode configurar seu navegador para recusar cookies, ciente de que algumas funcionalidades podem ser afetadas.",
       },
       termsModal: {
         intro: "Estes Termos de Uso regulam o acesso e a utilização do site da Nebula Systems, inscrita no CNPJ sob o nº 63.551.104/0001-04. Ao acessar este site, o usuário concorda com os termos e condições aqui descritos.",
-  
-  acceptance: "1. Aceitação dos Termos",
-  acceptanceText: "Ao acessar ou utilizar este site, o usuário declara que leu, compreendeu e concorda integralmente com estes Termos de Uso. Caso não concorde, recomenda-se que não utilize o site.",
-  
-  useOfService: "2. Uso do Site",
-  useOfServiceText: "O conteúdo disponibilizado neste site tem caráter informativo e institucional. O usuário compromete-se a utilizar o site de forma lícita, ética e em conformidade com a legislação vigente, não praticando atos que possam causar danos à empresa ou a terceiros.",
-  
-  intellectualProperty: "3. Propriedade Intelectual",
-  intellectualPropertyText: "Todos os conteúdos deste site, incluindo textos, códigos, imagens, marcas e logotipos, são de propriedade da Nebula Systems ou de seus licenciadores, sendo protegidos pelas leis de direitos autorais e propriedade intelectual. É vedada a reprodução, distribuição ou modificação sem autorização prévia.",
-  
-  limitationOfLiability: "4. Limitação de Responsabilidade",
-  limitationOfLiabilityText: "A Nebula Systems não se responsabiliza por danos diretos ou indiretos decorrentes do uso ou da impossibilidade de uso do site, bem como por eventuais falhas técnicas, indisponibilidades temporárias ou informações de terceiros.",
-  
-  modifications: "5. Modificações dos Termos",
-  modificationsText: "A Nebula Systems reserva-se o direito de alterar estes Termos de Uso a qualquer momento, mediante atualização deste conteúdo. Recomenda-se a revisão periódica para ciência de eventuais alterações.",
-  
-  applicableLaw: "6. Lei Aplicável",
-  applicableLawText: "Estes Termos de Uso são regidos e interpretados de acordo com as leis da República Federativa do Brasil. Eventuais controvérsias serão dirimidas no foro do domicílio da empresa, salvo disposição legal em contrário.",
+        acceptance: "1. Aceitação dos Termos",
+        acceptanceText: "Ao acessar ou utilizar este site, o usuário declara que leu, compreendeu e concorda integralmente com estes Termos de Uso. Caso não concorde, recomenda-se que não utilize o site.",
+        serviceUse: "2. Uso do Site",
+        serviceUseText: "O conteúdo disponibilizado neste site tem caráter informativo e institucional. O usuário compromete-se a utilizar o site de forma lícita, ética e em conformidade com a legislação vigente, não praticando atos que possam causar danos à empresa ou a terceiros.",
+        intellectualProperty: "3. Propriedade Intelectual",
+        intellectualPropertyText: "Todos os conteúdos deste site, incluindo textos, códigos, imagens, marcas e logotipos, são de propriedade da Nebula Systems ou de seus licenciadores, sendo protegidos pelas leis de direitos autorais e propriedade intelectual. É vedada a reprodução, distribuição ou modificação sem autorização prévia.",
+        liability: "4. Limitação de Responsabilidade",
+        liabilityText: "A Nebula Systems não se responsabiliza por danos diretos ou indiretos decorrentes do uso ou da impossibilidade de uso do site, bem como por eventuais falhas técnicas, indisponibilidades temporárias ou informações de terceiros.",
+        modifications: "5. Modificações dos Termos",
+        modificationsText: "A Nebula Systems reserva-se o direito de alterar estes Termos de Uso a qualquer momento, mediante atualização deste conteúdo. Recomenda-se a revisão periódica para ciência de eventuais alterações.",
+        applicableLaw: "6. Lei Aplicável",
+        applicableLawText: "Estes Termos de Uso são regidos e interpretados de acordo com as leis da República Federativa do Brasil. Eventuais controvérsias serão dirimidas no foro do domicílio da empresa, salvo disposição legal em contrário.",
       },
       docsModal: {
-  intro: "Esta seção descreve a metodologia de trabalho e o processo de desenvolvimento adotados pela Nebula Systems. Cada projeto segue um fluxo estruturado, com foco em qualidade técnica, previsibilidade e eficiência operacional.",
-  
-  methodology: "1. Metodologia de Trabalho",
-  methodologyText: "Os projetos são conduzidos com metodologias ágeis adaptadas à complexidade e ao escopo de cada iniciativa, utilizando ciclos iterativos, entregas frequentes e comunicação contínua com o cliente. Cada etapa é documentada e validada antes do avanço para a próxima fase.",
-  
-  developmentProcess: "2. Processo de Desenvolvimento",
-  developmentProcessText: "O processo de desenvolvimento é estruturado nas seguintes etapas: Discovery (levantamento e entendimento dos requisitos), Design (definição da arquitetura e soluções técnicas), Development (implementação e testes), Deployment (publicação, monitoramento e ajustes) e Maintenance (suporte contínuo e evolução do sistema).",
-  
-  toolsStack: "3. Ferramentas e Stack Tecnológica",
-  toolsStackText: "Utilizamos tecnologias modernas e amplamente adotadas pelo mercado, como React, TypeScript, Node.js, Python, Docker e provedores de cloud como AWS. A definição da stack é sempre orientada pelas necessidades técnicas, requisitos de negócio e objetivos de longo prazo de cada projeto.",
-  
-  qualityAssurance: "4. Garantia de Qualidade",
-  qualityAssuranceText: "Todo o código desenvolvido passa por práticas de garantia de qualidade, incluindo revisões técnicas, testes automatizados (unitários e de integração) e análise estática. São adotados padrões de clean code, versionamento adequado e documentação técnica atualizada.",
-  
-  communication: "5. Comunicação e Acompanhamento",
-  communicationText: "A comunicação com o cliente ocorre de forma estruturada, com reuniões periódicas de acompanhamento, relatórios de progresso e acesso aos repositórios do projeto. A transparência técnica é mantida em todas as etapas do desenvolvimento.",
-},
+        intro: "Esta seção descreve minha metodologia de trabalho e processo de desenvolvimento. Cada projeto segue um fluxo estruturado para garantir qualidade e eficiência.",
+        methodology: "1. Metodologia de Trabalho",
+        methodologyText: "Utilizo metodologias ágeis adaptadas para projetos individuais, com sprints semanais, entregas iterativas e comunicação constante com o cliente. Cada fase é documentada e validada antes de avançar.",
+        process: "2. Processo de Desenvolvimento",
+        processText: "O desenvolvimento segue as etapas: Discovery (levantamento de requisitos), Design (arquitetura e protótipos), Development (codificação e testes), Deployment (publicação e monitoramento) e Maintenance (suporte contínuo).",
+        tools: "3. Ferramentas & Stack",
+        toolsText: "Trabalho com React, TypeScript, Node.js, Python, Docker, AWS, Azure e outras tecnologias modernas. A escolha da stack é sempre baseada nas necessidades específicas de cada projeto.",
+        quality: "4. Garantia de Qualidade",
+        qualityText: "Todo código passa por code review, testes automatizados (unitários e de integração), e análise estática. Mantenho padrões de clean code e documentação técnica atualizada.",
+        communication: "5. Comunicação",
+        communicationText: "Reuniões semanais de acompanhamento, relatórios de progresso, acesso a repositório em tempo real e canal direto para dúvidas. Transparência total em todas as etapas do projeto.",
+      },
     },
   },
 
@@ -389,6 +482,8 @@ export const translations = {
     nav: {
       inicio: "HOME",
       servicos: "SERVICES",
+      processo: "PROCESS",
+      arquitetura: "ARCHITECTURE",
       tech: "TECH",
       sobre: "ABOUT",
       contato: "CONTACT",
@@ -397,26 +492,16 @@ export const translations = {
 
     // Hero
     hero: {
-      systemInit: "INITIALIZING SYSTEM",
-      missionActive: "MISSION ACTIVE",
-      title1: "SOFTWARE",
-      title2: "<DEVELOPMENT/>",
+      eyebrow: "Software engineering & cloud",
+      title1: "Custom software,",
+      title2: "from idea to production.",
       subtitle:
-        "Software engineering and cloud infrastructure for critical missions. We build your business's digital foundation.",
-      criticalMissions: "critical missions",
-      stats: {
-        years: "YEARS",
-        projects: "PROJECTS",
-        stack: "STACK",
-      },
+        "Web applications and AWS infrastructure for businesses that depend on technology that works. You talk directly to the engineer — no middlemen.",
+      stack: "React · TypeScript · Node.js · AWS · Docker · Terraform",
+      founderCredit: "Founded and built by",
       cta: {
-        startProject: "START PROJECT",
+        startProject: "GET IN TOUCH",
         viewServices: "VIEW SERVICES",
-      },
-      pills: {
-        cloud: "CLOUD",
-        devops: "DEVOPS",
-        deploy: "DEPLOY",
       },
       scroll: "SCROLL",
     },
@@ -542,6 +627,7 @@ export const translations = {
         nosql: "NOSQL",
         iac: "IAC",
         framework: "FRAMEWORK",
+        deploy: "DEPLOY",
       },
       skills: {
         // React
@@ -591,17 +677,15 @@ export const translations = {
         organizationsDesc: "Multi-account management",
         iamSecurity: "IAM & Security",
         iamSecurityDesc: "Access control and policies",
-        // Azure
-        azureFunctions: "Azure Functions",
-        azureFunctionsDesc: "Serverless compute",
-        appService: "App Service",
-        appServiceDesc: "Web apps and APIs",
-        blobStorage: "Blob Storage",
-        blobStorageDesc: "Scalable object storage",
-        azureDevOps: "Azure DevOps",
-        azureDevOpsDesc: "CI/CD pipelines",
-        cosmosDb: "Cosmos DB",
-        cosmosDbDesc: "Global NoSQL database",
+        // Vercel
+        vercelDeploy: "Automatic Deploy",
+        vercelDeployDesc: "Continuous deployment from Git",
+        vercelEdge: "Edge Functions",
+        vercelEdgeDesc: "Serverless functions at the edge",
+        vercelAnalytics: "Web Analytics",
+        vercelAnalyticsDesc: "Performance metrics",
+        vercelPreview: "Preview Deployments",
+        vercelPreviewDesc: "Preview environments per branch",
         // Docker
         dockerfile: "Dockerfile",
         dockerfileDesc: "Optimized image builds",
@@ -652,23 +736,23 @@ export const translations = {
 
     // Stats / About
     stats: {
-      badge: "ABOUT THE COMPANY",
+      badge: "ABOUT THE MISSION",
       title: "SOFTWARE",
       titleHighlight: "ENGINEERING",
       description1:
-        "The company operates in the development of software systems and high-performance cloud architectures, with a strong focus on clean, scalable code and well-designed infrastructure.",
+        "I'm a solo developer specialized in building high-performance software systems and cloud infrastructure. My mission is to transform complex ideas into clean, scalable code.",
       description2:
-        "Projects are carried out with direct involvement of the responsible software engineer, serving clients ranging from startups to corporate environments and enterprise-level operations.",
+        "From startups to enterprise operations, I deliver solutions that work at the scale and speed your business demands.",
       items: [
-        //{ value: "50+", label: "PROJECTS DELIVERED", icon: "🚀" },
-        { value: "8+", label: "YEARS CODING", icon: "⌨️" },
-        { value: "99.9%", label: "SLA GUARANTEED", icon: "📊" },
-        { value: "24/7", label: "DEDICATION", icon: "🛡" },
+        { value: "8+", label: "YEARS OF EXPERIENCE", icon: "⌨️" },
+        { value: "1:1", label: "DIRECT ACCESS TO THE FOUNDER", icon: "🤝" },
+        { value: "AWS", label: "CLOUD & INFRASTRUCTURE", icon: "☁️" },
+        { value: "CI/CD", label: "VERSIONED DELIVERIES", icon: "🔁" },
       ],
       terminal: {
         command: "dev_info",
         type: "type",
-        soloDeveloper: "software engineer",
+        soloDeveloper: "solo developer",
         experience: "experience",
         experienceValue: "8+ years",
         stack: "stack",
@@ -684,6 +768,122 @@ export const translations = {
       ],
     },
 
+    // Founder
+    founder: {
+      label: "WHO BUILDS IT",
+      name: "Alberto",
+      role: "Founder & Software Engineer · Nebula Systems",
+      bio: "I'm a software engineer with 8+ years building web applications and cloud infrastructure. At Nebula Systems you work directly with me — no layers, no handoff to juniors. I handle the project end to end: from architecture to deployment on AWS and continuous evolution.",
+      boutique: "Boutique, not a factory: direct access to the engineer who writes the code.",
+      photoPlaceholder: "your photo here",
+      links: {
+        linkedin: "LinkedIn",
+        github: "GitHub",
+        email: "Email",
+      },
+    },
+
+    // Architecture
+    architecture: {
+      badge: "REFERENCE ARCHITECTURE",
+      title: "HOW I",
+      titleHighlight: "BUILD",
+      subtitle: "Patterns I use in production — scalable, versioned and secure. Click to see each architecture in detail.",
+      viewDetail: "view detail",
+      items: [
+        {
+          title: "Web app in production",
+          caption: "High availability with containers and cache",
+          points: [
+            "CloudFront + WAF at the edge",
+            "ECS Fargate with auto-scaling",
+            "RDS Multi-AZ + ElastiCache",
+            "Private VPC, infra as code with Terraform",
+          ],
+        },
+        {
+          title: "CI/CD Pipeline",
+          caption: "From commit to production, zero downtime",
+          points: [
+            "Automated tests on every Pull Request",
+            "Build and push image to ECR",
+            "Rolling deploy on ECS",
+            "Automatic rollback on health-check failure",
+          ],
+        },
+        {
+          title: "Serverless Architecture",
+          caption: "Auto-scaling, pay per use",
+          points: [
+            "API Gateway + Lambda",
+            "DynamoDB on-demand",
+            "Authentication with Cognito",
+            "No servers to maintain",
+          ],
+        },
+      ],
+    },
+
+    // Process
+    process: {
+      badge: "DEVELOPMENT FLOW",
+      title: "OUR",
+      titleHighlight: "PROCESS",
+      subtitle: "Every project follows a structured flow to ensure quality, scalability, and risk reduction.",
+      stepLabel: "STEP",
+      steps: [
+        {
+          title: "Idea → Structure",
+          items: [
+            "Understanding the problem and business context",
+            "Defining the solution and project scope",
+            "Mapping requirements and objectives",
+          ],
+          note: null,
+        },
+        {
+          title: "Design & Prototyping",
+          items: [
+            "Wireframes and visual mockups",
+            "User flows and journeys",
+            "Validation before writing code",
+          ],
+          note: "Interactive prototypes for visual approval",
+        },
+        {
+          title: "Architecture",
+          items: [
+            "Technical definition and stack selection",
+            "Scalability planning",
+            "System and module organization",
+          ],
+          note: "Aligned with ISO/IEC 42010:2022",
+        },
+        {
+          title: "Development",
+          items: [
+            "Implementation with best practices",
+            "Code review and automated testing",
+            "Version control and CI/CD",
+          ],
+          note: null,
+        },
+        {
+          title: "Delivery & Evolution",
+          items: [
+            "Production environment deploy",
+            "Monitoring and observability",
+            "Continuous improvements and support",
+          ],
+          note: null,
+        },
+      ],
+      quote: "Before writing code, we structure the solution visually and technically — reducing risks and rework.",
+      videoPreview: "PROCESS PREVIEW",
+      watchVideo: "Watch the demo video",
+      videoComingSoon: "Demo video coming soon",
+    },
+
     // Contact
     contact: {
       badge: "START CONNECTION",
@@ -695,8 +895,8 @@ export const translations = {
       status: "CHANNEL OPEN // RESPONSE IN < 24H",
       info: [
         { title: "EMAIL", value: "albertojr11@hotmail.com" },
-        { title: "COMM LINK", value: "+55 (71) 9 9399-9204" },
-        { title: "BASE", value: "Bahia, Brasil" },
+        { title: "WHATSAPP", value: "+55 (71) 9 9399-9204" },
+        { title: "BASE", value: "Bahia, Brazil" },
       ],
     },
 
@@ -711,62 +911,45 @@ export const translations = {
       lastUpdated: "Last updated",
       privacyModal: {
         intro: "Nebula Systems, registered under CNPJ number 63.551.104/0001-04, respects user privacy and is committed to protecting personal data processed in its operations, in accordance with the Brazilian General Data Protection Law (Law No. 13,709/2018 – LGPD).",
-  
-  dataCollection: "1. Data Collection",
-  dataCollectionText: "We collect only personal data voluntarily provided by the user, such as name and email address, through contact forms. Technical information, such as IP address, browser type, and accessed pages, may be automatically collected for statistical and security purposes.",
-  
-  useOfInfo: "2. Use of Information",
-  useOfInfoText: "The personal data collected is used to respond to contact requests, provide information about services, improve user experience, and comply with legal and regulatory obligations. Data is processed only for as long as necessary to fulfill these purposes.",
-  
-  dataSharing: "3. Data Sharing",
-  dataSharingText: "Nebula Systems does not sell personal data. Data sharing may occur only when required to comply with legal obligations, perform contracted services, or protect the company’s rights.",
-  
-  security: "4. Security",
-  securityText: "We adopt appropriate technical and organizational measures to protect personal data against unauthorized access, loss, alteration, or improper disclosure, following information security best practices.",
-  
-  cookies: "5. Cookies",
-  cookiesText: "The website may use cookies strictly necessary for its proper functioning and performance analysis. Users may configure their browser to refuse cookies, understanding that some features may be affected.",
+        dataCollection: "1. Data Collection",
+        dataCollectionText: "We collect only personal data voluntarily provided by the user, such as name and email address, through contact forms. Technical information, such as IP address, browser type, and accessed pages, may be automatically collected for statistical and security purposes.",
+        useOfInfo: "2. Use of Information",
+        useOfInfoText: "The personal data collected is used to respond to contact requests, provide information about services, improve user experience, and comply with legal and regulatory obligations. Data is processed only for as long as necessary to fulfill these purposes.",
+        dataSharing: "3. Data Sharing",
+        dataSharingText: "Nebula Systems does not sell personal data. Data sharing may occur only when required to comply with legal obligations, perform contracted services, or protect the company's rights.",
+        security: "4. Security",
+        securityText: "We adopt appropriate technical and organizational measures to protect personal data against unauthorized access, loss, alteration, or improper disclosure, following information security best practices.",
+        cookies: "5. Cookies",
+        cookiesText: "The website may use cookies strictly necessary for its proper functioning and performance analysis. Users may configure their browser to refuse cookies, understanding that some features may be affected.",
       },
       termsModal: {
         intro: "These Terms of Use govern access to and use of the website operated by Nebula Systems, registered under CNPJ number 63.551.104/0001-04. By accessing this website, the user agrees to the terms and conditions described herein.",
-  
-  acceptance: "1. Acceptance of the Terms",
-  acceptanceText: "By accessing or using this website, the user confirms that they have read, understood, and fully agreed to these Terms of Use. If the user does not agree, they should refrain from using the website.",
-  
-  useOfService: "2. Use of the Website",
-  useOfServiceText: "The content provided on this website is for informational and institutional purposes only. Users agree to use the website lawfully, ethically, and in compliance with applicable laws, refraining from any actions that may cause harm to the company or third parties.",
-  
-  intellectualProperty: "3. Intellectual Property",
-  intellectualPropertyText: "All content on this website, including text, code, images, trademarks, and logos, is the property of Nebula Systems or its licensors and is protected by copyright and intellectual property laws. Reproduction, distribution, or modification without prior authorization is prohibited.",
-  
-  limitationOfLiability: "4. Limitation of Liability",
-  limitationOfLiabilityText: "Nebula Systems shall not be liable for any direct or indirect damages arising from the use or inability to use the website, including technical failures, temporary unavailability, or third-party information.",
-  
-  modifications: "5. Changes to the Terms",
-  modificationsText: "Nebula Systems reserves the right to modify these Terms of Use at any time by updating this content. Users are encouraged to review the terms periodically to stay informed of any changes.",
-  
-  applicableLaw: "6. Governing Law",
-  applicableLawText: "These Terms of Use shall be governed by and construed in accordance with the laws of the Federative Republic of Brazil. Any disputes shall be resolved in the jurisdiction of the company’s registered office, unless otherwise required by law.",
+        acceptance: "1. Acceptance of Terms",
+        acceptanceText: "By accessing or using this website, the user confirms that they have read, understood, and fully agreed to these Terms of Use. If the user does not agree, they should refrain from using the website.",
+        serviceUse: "2. Use of the Website",
+        serviceUseText: "The content provided on this website is for informational and institutional purposes only. Users agree to use the website lawfully, ethically, and in compliance with applicable laws, refraining from any actions that may cause harm to the company or third parties.",
+        intellectualProperty: "3. Intellectual Property",
+        intellectualPropertyText: "All content on this website, including text, code, images, trademarks, and logos, is the property of Nebula Systems or its licensors and is protected by copyright and intellectual property laws. Reproduction, distribution, or modification without prior authorization is prohibited.",
+        liability: "4. Limitation of Liability",
+        liabilityText: "Nebula Systems shall not be liable for any direct or indirect damages arising from the use or inability to use the website, including technical failures, temporary unavailability, or third-party information.",
+        modifications: "5. Changes to the Terms",
+        modificationsText: "Nebula Systems reserves the right to modify these Terms of Use at any time by updating this content. Users are encouraged to review the terms periodically to stay informed of any changes.",
+        applicableLaw: "6. Governing Law",
+        applicableLawText: "These Terms of Use shall be governed by and construed in accordance with the laws of the Federative Republic of Brazil. Any disputes shall be resolved in the jurisdiction of the company's registered office, unless otherwise required by law.",
       },
       docsModal: {
-  intro: "This section outlines the work methodology and development process adopted by Nebula Systems. Each project follows a structured workflow focused on technical quality, predictability, and operational efficiency.",
-  
-  methodology: "1. Work Methodology",
-  methodologyText: "Projects are conducted using agile methodologies adapted to the scope and complexity of each initiative, with iterative cycles, frequent deliveries, and continuous communication with the client. Each phase is documented and validated before proceeding to the next stage.",
-  
-  developmentProcess: "2. Development Process",
-  developmentProcessText: "The development process is structured into the following stages: Discovery (requirements analysis and understanding), Design (architecture definition and technical solutions), Development (implementation and testing), Deployment (release, monitoring, and adjustments), and Maintenance (continuous support and system evolution).",
-  
-  toolsStack: "3. Tools and Technology Stack",
-  toolsStackText: "We use modern, industry-standard technologies such as React, TypeScript, Node.js, Python, Docker, and cloud providers including AWS. The technology stack is always selected based on technical requirements, business needs, and long-term project goals.",
-  
-  qualityAssurance: "4. Quality Assurance",
-  qualityAssuranceText: "All developed code undergoes quality assurance practices, including technical reviews, automated testing (unit and integration tests), and static analysis. Clean code standards, proper version control, and up-to-date technical documentation are consistently applied.",
-  
-  communication: "5. Communication and Reporting",
-  communicationText: "Client communication is handled in a structured manner, with regular status meetings, progress reports, and access to project repositories. Technical transparency is maintained throughout all stages of the development lifecycle.",
-},
-
+        intro: "This section describes my work methodology and development process. Each project follows a structured flow to ensure quality and efficiency.",
+        methodology: "1. Work Methodology",
+        methodologyText: "I use agile methodologies adapted for individual projects, with weekly sprints, iterative deliveries, and constant client communication. Each phase is documented and validated before moving forward.",
+        process: "2. Development Process",
+        processText: "Development follows these stages: Discovery (requirements gathering), Design (architecture and prototypes), Development (coding and testing), Deployment (publishing and monitoring), and Maintenance (ongoing support).",
+        tools: "3. Tools & Stack",
+        toolsText: "I work with React, TypeScript, Node.js, Python, Docker, AWS, Azure, and other modern technologies. Stack choice is always based on the specific needs of each project.",
+        quality: "4. Quality Assurance",
+        qualityText: "All code goes through code review, automated testing (unit and integration), and static analysis. I maintain clean code standards and up-to-date technical documentation.",
+        communication: "5. Communication",
+        communicationText: "Weekly follow-up meetings, progress reports, real-time repository access, and a direct channel for questions. Full transparency at every stage of the project.",
+      },
     },
   },
 } as const;
