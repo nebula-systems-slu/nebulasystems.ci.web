@@ -208,8 +208,6 @@ export const translations = {
         vercelAnalyticsDesc: "Métricas de performance",
         vercelPreview: "Preview Deployments",
         vercelPreviewDesc: "Ambientes de preview por branch",
-        // Keep cosmosDb for compatibility but unused
-        cosmosDbDesc: "Database NoSQL global",
         // Docker
         dockerfile: "Dockerfile",
         dockerfileDesc: "Build de imagens otimizadas",
