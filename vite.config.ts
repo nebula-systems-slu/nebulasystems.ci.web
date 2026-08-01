@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -39,5 +40,17 @@ export default defineConfig(() => ({
   },
   define: {
     __APP_VERSION__: JSON.stringify(resolveVersion()),
+  },
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./src/test/setup.ts",
+    css: true,
+    coverage: {
+      provider: "v8",
+      reporter: ["text", "lcov"],
+      // foca a cobertura no código de aplicação, não em UI gerada / configs
+      exclude: ["src/components/ui/**", "**/*.d.ts", "src/main.tsx", "src/test/**"],
+    },
   },
 }));
