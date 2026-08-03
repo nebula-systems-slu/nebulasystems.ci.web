@@ -1,4 +1,5 @@
-import { Linkedin, Github, Mail, Terminal } from "lucide-react";
+import { Mail, Terminal } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./icons";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 // TODO: adicionar o LinkedIn real quando disponível
@@ -62,8 +63,8 @@ export const Founder = () => {
               {/* Links */}
               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                 {[
-                  { icon: Linkedin, label: t.founder.links.linkedin, href: FOUNDER_LINKS.linkedin },
-                  { icon: Github, label: t.founder.links.github, href: FOUNDER_LINKS.github },
+                  { icon: LinkedinIcon, label: t.founder.links.linkedin, href: FOUNDER_LINKS.linkedin },
+                  { icon: GithubIcon, label: t.founder.links.github, href: FOUNDER_LINKS.github },
                   { icon: Mail, label: t.founder.links.email, href: FOUNDER_LINKS.email },
                 ].filter(({ href }) => href !== "#").map(({ icon: Icon, label, href }) => {
                   const external = href.startsWith("http");

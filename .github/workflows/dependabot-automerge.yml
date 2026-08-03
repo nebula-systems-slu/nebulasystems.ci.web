@@ -1,0 +1,30 @@
+name: Dependabot auto-merge
+
+# Habilita auto-merge nos PRs do Dependabot que forem patch/minor.
+# O merge só acontece DEPOIS que os status checks obrigatórios (a CI) passarem —
+# isso exige proteção de branch na `main` com a CI marcada como check obrigatório.
+# Updates MAJOR ficam de fora de propósito (revisão manual).
+
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Metadata do Dependabot
+        id: meta
+        uses: dependabot/fetch-metadata@v2
+
+      - name: Habilita auto-merge (patch/minor)
+        if: >-
+          steps.meta.outputs.update-type == 'version-update:semver-patch' ||
+          steps.meta.outputs.update-type == 'version-update:semver-minor'
+        run: gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,4 +1,5 @@
-import { Github, Terminal } from "lucide-react";
+import { Terminal } from "lucide-react";
+import { GithubIcon } from "./icons";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useState } from "react";
 import {
@@ -61,7 +62,7 @@ export const Footer = () => {
           {/* Social */}
           <div className="flex items-center gap-3">
             {[
-              { icon: Github, href: "https://github.com/nebula-systems-slu", label: "GitHub" },
+              { icon: GithubIcon, href: "https://github.com/nebula-systems-slu", label: "GitHub" },
             ].map((social, index) => {
               const external = social.href.startsWith("http");
               return (
