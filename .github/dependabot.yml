@@ -30,6 +30,28 @@ updates:
     # sozinha, e sem segurar o resto. O auto-merge continua valendo só
     # para patch/minor, então major nenhum entra sem alguém olhar.
     groups:
+      # ATENÇÃO À ORDEM: o Dependabot usa o PRIMEIRO grupo que casar com
+      # o pacote. Os grupos de família precisam vir antes dos genéricos,
+      # senão react e eslint cairiam em production-deps/dev-deps.
+      #
+      # Estes dois grupos não têm update-types de propósito: cobrem
+      # também os majors. São pacotes que só funcionam na mesma versão,
+      # então separá-los produz PRs que nenhuma passa sozinha — foi o
+      # que aconteceu antes: react subiu para 19 deixando
+      # @types/react-dom em 18, e o npm ci falhou com ERESOLVE; eslint e
+      # @eslint/js foram separados e nenhum dos dois instalava.
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      eslint:
+        patterns:
+          - "eslint"
+          - "@eslint/*"
+          - "typescript-eslint"
+          - "eslint-plugin-*"
       production-deps:
         applies-to: version-updates
         dependency-type: "production"
