@@ -8,7 +8,10 @@ updates:
       day: "monday"
       time: "06:00"
       timezone: "America/Bahia"
-    open-pull-requests-limit: 5
+    # Com os majors saindo em PRs individuais, o número de PRs abertas
+    # sobe. O limite de 5 ficaria saturado e o Dependabot pararia de
+    # abrir as novas — inclusive as de segurança.
+    open-pull-requests-limit: 10
     labels:
       - "dependencies"
     # Prefixo conventional-commits: "chore" NÃO dispara release no semantic-release.
@@ -16,13 +19,29 @@ updates:
       prefix: "chore(deps)"
       prefix-development: "chore(deps-dev)"
     # Agrupa updates para reduzir o número de PRs (menos ruído).
+    #
+    # Os grupos cobrem apenas minor e patch DE PROPÓSITO. Sem essa
+    # restrição, um major cai no mesmo pacote das atualizações pequenas
+    # e trava o grupo inteiro: foi o que aconteceu quando o React 19
+    # entrou na PR de 44 atualizações e deixou todas as outras 43
+    # presas atrás de um type-check quebrado.
+    #
+    # Fora do grupo, cada major vira uma PR individual — revisável
+    # sozinha, e sem segurar o resto. O auto-merge continua valendo só
+    # para patch/minor, então major nenhum entra sem alguém olhar.
     groups:
       production-deps:
         applies-to: version-updates
         dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
       dev-deps:
         applies-to: version-updates
         dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
     ignore:
       # vitest 3+ exige vite 6; o projeto está no vite 5. Manter vitest na 2.x
       # (minor/patch continuam sendo atualizados) até migrarmos o vite.
